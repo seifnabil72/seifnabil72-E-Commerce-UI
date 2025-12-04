@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Premium E-Commerce Store UI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+/* THEME */
+:root{
+ --bg:#0e1116;
+ --bg2:#151a23;
+ --text:#fff;
+ --muted:#9ca3af;
+ --card:#1b2029;
+ --accent:#6a5af9;
+ --accent2:#00e2ff;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+body{background:var(--bg);color:white;overflow-x:hidden;}
+
+/* NAVBAR */
+nav{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:1.3rem 2rem;position:sticky;top:0;
+ background:#0e1116dd;backdrop-filter:blur(12px);
+ border-bottom:1px solid rgba(255,255,255,.05);
+}
+.logo{
+ font-size:1.5rem;font-weight:700;cursor:pointer;
+ background:linear-gradient(90deg,var(--accent),var(--accent2));
+ -webkit-background-clip:text;color:transparent;
+}
+nav input{
+ background:#1b1f27;border:none;padding:.75rem 1.1rem;border-radius:12px;
+ width:300px;color:white;outline:none;transition:.35s;
+}
+nav input:focus{transform:scale(1.06);border:1px solid var(--accent2);}
+nav button{
+ background:var(--accent);padding:.65rem 1.3rem;border:none;border-radius:10px;
+ font-weight:600;cursor:pointer;transition:.3s;
+}
+nav button:hover{transform:scale(1.1);}
+
+/* HERO SLIDER */
+.hero{
+ height:55vh;display:flex;justify-content:center;align-items:center;text-align:center;
+ background:url('https://i.imgur.com/Lc7yXpm.jpeg') center/cover fixed;
+ position:relative;overflow:hidden;
+}
+.hero::after{
+ content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+ background:rgba(0,0,0,.6);
+}
+.hero h1{
+ position:relative;font-size:2.6rem;font-weight:800;
+ background:linear-gradient(90deg,var(--accent),var(--accent2));
+ -webkit-background-clip:text;color:transparent;
+ animation:fadeUp 1.3s ease;
+}
+
+/* PRODUCTS GRID */
+.products{
+ max-width:1100px;margin:auto;padding:3rem 1rem;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;
+}
+.card{
+ background:var(--card);border-radius:14px;padding:1rem;cursor:pointer;
+ border:1px solid rgba(255,255,255,.05);transition:.45s;position:relative;
+}
+.card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 25px 60px rgba(0,226,255,.35);}
+.card img{width:100%;border-radius:10px;margin-bottom:.7rem;}
+.card h3{font-size:1rem;margin-bottom:.3rem;}
+.price{font-size:1.2rem;font-weight:700;}
+.old{color:var(--muted);text-decoration:line-through;font-size:.85rem;margin-left:.4rem;}
+.rate{font-size:.8rem;color:var(--accent2);margin-bottom:.6rem;display:block;}
+
+/* 3D EFFECT */
+.card:hover img{transform:scale(1.08);filter:brightness(1.1);}
+
+/* BADGES */
+.badge{
+ position:absolute;top:10px;left:10px;padding:.25rem .65rem;font-size:.75rem;
+ background:var(--accent2);color:#000;border-radius:6px;font-weight:700;
+}
+
+/* FOOTER */
+footer{text-align:center;color:var(--muted);padding:2rem 0;font-size:.9rem;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* ==== MODAL ==== */
+.modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.6);display:none;justify-content:center;align-items:center;
+}
+.modal-content{
+  width:350px;background:#161a23;padding:1.6rem;border-radius:15px;text-align:center;
+  animation:fade .4s;box-shadow:0 25px 60px rgba(106,90,249,.35);
+}
+.close{
+  font-size:1.8rem;cursor:pointer;color:#fff;float:right;margin-top:-5px;
+}
+.modal-content img{width:230px;margin-bottom:.8rem;border-radius:12px;}
+
+@keyframes fade{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
+
+/* ==== CART SIDEBAR ==== */
+.cart{
+  position:fixed;right:-360px;top:0;width:330px;height:100%;
+  background:#151a23;padding:1.6rem;transition:.45s;border-left:1px solid rgba(255,255,255,.1);
+}
+.cart.active{right:0;}
+.cart ul li{padding:.6rem;border-bottom:1px solid rgba(255,255,255,.08);}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+ <div class="logo">NeoStore+</div>
+ <input type="text" placeholder="Search products...">
+ <button>🛒 Cart</button>
+</nav>
+
+<section class="hero">
+ <h1>Elite Tech Store UI Experience ⚡</h1>
+</section>
+
+<section class="products">
+
+ <div class="card">
+   <span class="badge">Sale</span>
+   <img src="https://i.imgur.com/sFv4E7H.png">
+   <h3>iPhone 15 Pro Max</h3>
+   <span class="rate">★★★★★ 4.9</span>
+   <span class="price">$1199 <span class="old">$1399</span></span>
+ </div>
+
+ <div class="card">
+   <img src="https://i.imgur.com/A2E8m4n.png">
+   <h3>Sony XM5 Headset</h3>
+   <span class="rate">★★★★☆ 4.7</span>
+   <span class="price">$349</span>
+ </div>
+
+ <div class="card">
+   <span class="badge">New</span>
+   <img src="https://i.imgur.com/nlUFYcD.png">
+   <h3>Galaxy Watch Ultra</h3>
+   <span class="rate">★★★★☆ 4.8</span>
+   <span class="price">$399</span>
+ </div>
+
+ <div class="card">
+   <img src="https://i.imgur.com/0USzCIv.png">
+   <h3>Razer Gaming Mouse</h3>
+   <span class="rate">★★★★★ 5.0</span>
+   <span class="price">$89</span>
+ </div>
+
+</section>
+
+<footer>© 2025 NeoStore PRO UI — Crafted for Real E-Commerce.</footer>
+
+<!-- Quick View Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <img id="modalImg" src="" alt="">
+    <h2 id="modalName"></h2>
+    <p id="modalRate"></p>
+    <p id="modalPrice" style="font-size:1.3rem;font-weight:700;"></p>
+    <button onclick="addToCart()">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Cart Sidebar -->
+<div id="cart" class="cart">
+  <h2>Your Cart</h2>
+  <ul id="cartList"></ul>
+  <button onclick="closeCart()">Close</button>
+</div>
+
+<script>
+  let modal=document.getElementById("modal");
+  let modalImg=document.getElementById("modalImg");
+  let modalName=document.getElementById("modalName");
+  let modalRate=document.getElementById("modalRate");
+  let modalPrice=document.getElementById("modalPrice");
+  
+  function openModal(name, img, rate, price){
+    modal.style.display="flex";
+    modalImg.src=img;
+    modalName.innerHTML=name;
+    modalRate.innerHTML=rate;
+    modalPrice.innerHTML=price;
+  }
+  function closeModal(){modal.style.display="none";}
+  
+  /* CART */
+  let cart=document.getElementById("cart");
+  let cartItems=document.getElementById("cartList");
+  function addToCart(){
+    let item=document.createElement("li");
+    item.innerHTML=modalName.innerHTML+" — "+modalPrice.innerHTML;
+    cartItems.appendChild(item);
+  }
+  function openCart(){cart.classList.add("active");}
+  function closeCart(){cart.classList.remove("active");}
+  </script>
+  
+</body>
+</html>
